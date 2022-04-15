@@ -1,0 +1,52 @@
+body {
+    background-color: #645c6513;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.line-through {
+    text-decoration: line-through;
+    text-decoration-color: rgb(102, 26, 26);
+}
+
+.btn {
+    background-color: #3e2b9e40;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+button {
+    border: none;
+    outline: none; 
+    padding: 5px 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    color: #4f2683;
+    background-color: #9983a4d6;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #f8f8fa;
+    color: #4f268363;
+}
+
+button:not([disabled]):hover {
+    background-color: #83a4a3d6;
+    color: rgb(240, 248, 255);
+} 
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    color: rgb(234 116 69);
+}
