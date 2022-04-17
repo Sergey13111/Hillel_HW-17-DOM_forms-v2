@@ -29,24 +29,33 @@ form_input.onsubmit = (event) => {
     const checkbox = createNode("input");
     const button = createNode("button");
 
+    
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("name", "completed");
     checkbox.setAttribute("class", "form-check-input")
     li.classList.add("text-message");
     li.innerHTML = message.value;
     button.textContent = "Delete";
+
+
     append(ul, li);
     prepend(li, checkbox);
     append(li, button);
     form_input.reset();
 
-    const chbox = li.querySelector("input[name='completed']");
+    ul.addEventListener("change", (event) => {
+        const btnRemove = li.querySelector("button");
+        const isChecked = event.target.className === "form-check-input";
 
-    chbox.onchange = ({target:{checked}}) => {
-        button.disabled = checked;
-        chbox.disabled = checked;
-        li.classList.add("line-through");
-    }
+        if (isChecked) {
+            const messageBlock = event.target.closest(".text-message");
+            const chbox = event.target;
+     
+            messageBlock.classList.add("line-through");
+            chbox.disabled = true;
+            btnRemove.disabled = true;
+        };
+    });
 };
 
 message.onfocus = () => {
