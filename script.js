@@ -32,6 +32,18 @@ function removeError() {
     return;
 }
 
+function getCompletedTask(event) {
+    const btnRemove = li.querySelector("button");
+    const isChecked = event.target.className === "form-check-input";
+
+    if (isChecked) {
+        const chbox = event.target;
+        span.classList.add("line-through");
+        chbox.disabled = true;
+        btnRemove.disabled = true;
+    };
+}
+
 const form_input = document.forms.form_message;
 const {message} = form_input;
 const errorMessage = document.querySelector(".error-message");
@@ -62,7 +74,6 @@ form_input.onsubmit = (event) => {
     span.innerHTML = message.value;
     button.textContent = "Delete";
 
-
     append(ul, li);
     append(li, span)
     prepend(li, checkbox);
@@ -70,17 +81,21 @@ form_input.onsubmit = (event) => {
     form_input.reset();
 
     ul.addEventListener("change", (event) => {
-        const btnRemove = li.querySelector("button");
         const isChecked = event.target.className === "form-check-input";
 
         if (isChecked) {
+            const li = event.target.closest("li");
+            const btnRemove = li.querySelector("button");
+            const span = li.querySelector("span");
             const chbox = event.target;
+            
             span.classList.add("line-through");
             chbox.disabled = true;
             btnRemove.disabled = true;
         };
     });
 };
+
 
 
 
